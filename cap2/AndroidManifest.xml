@@ -28,8 +28,13 @@
         <activity android:name=".activity.TextActivity" />
         <activity android:name=".activity.RelativeLayoutActivity" />
         <activity android:name=".activity.ViewPagerActivity" />
-        <activity android:name=".activity.VideoViewActivity" />
+        <activity
+            android:name=".activity.VideoViewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity android:name=".activity.LinearLayoutActivity" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
