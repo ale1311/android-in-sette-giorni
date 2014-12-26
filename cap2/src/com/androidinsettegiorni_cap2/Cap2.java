@@ -54,19 +54,13 @@ public class Cap2 extends Activity {
 		ElementAdapter adapter = new ElementAdapter(this, R.layout.element_list, creazioneElementi());
 
 		list.setAdapter(adapter);
-		list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View view, int position, long arg3) {
-
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				ElementoGrafico itemSelected = (ElementoGrafico) list.getItemAtPosition(position);
-
 				startActivity(new Intent(Cap2.this, itemSelected.getActivity()));
 
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
 
