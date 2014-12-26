@@ -2,6 +2,8 @@ package com.androidinsettegiorni_cap2;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,11 @@ public class Cap2 extends Activity {
 		bar.setSubtitle(R.string.action_bar_subtitle);
 		bar.setDisplayUseLogoEnabled(true);
 		bar.setDisplayShowTitleEnabled(true);
+
+		// Setup new backgrouns of the action bar
+		Resources r = getResources();
+		Drawable drawableBackground = r.getDrawable(R.drawable.ab_stacked_solid_112);
+		bar.setBackgroundDrawable(drawableBackground);
 
 	}
 
