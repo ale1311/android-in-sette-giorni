@@ -1,5 +1,7 @@
 package com.androidinsettegiorni_cap2;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -25,7 +27,7 @@ public class Cap2 extends Activity {
 		bar.setDisplayUseLogoEnabled(true);
 		bar.setDisplayShowTitleEnabled(true);
 
-		// Setup new backgrouns of the action bar
+		// Impostazione background dell'action bar
 		Resources r = getResources();
 		Drawable drawableBackground = r.getDrawable(R.drawable.ab_stacked_solid_112);
 		bar.setBackgroundDrawable(drawableBackground);
@@ -49,5 +51,12 @@ public class Cap2 extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private ArrayList<ElementoGrafico> creazioneElementi() {
+
+		ArrayList<ElementoGrafico> listElement = new ArrayList<ElementoGrafico>();
+
+		return listElement;
 	}
 }
