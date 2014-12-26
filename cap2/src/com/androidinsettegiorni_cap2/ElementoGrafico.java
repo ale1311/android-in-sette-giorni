@@ -8,6 +8,13 @@ public class ElementoGrafico {
 
 	private Class<? extends Activity> activity;
 
+	public ElementoGrafico(String name, Class<? extends Activity> activity) {
+
+		this.name = name;
+		this.activity = activity;
+
+	}
+
 	public String getName() {
 		return name;
 	}
