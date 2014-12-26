@@ -1,5 +1,7 @@
 package com.androidinsettegiorni_cap2.activity;
 
-public class LinearLayoutActivity {
+import android.app.Activity;
+
+public class LinearLayoutActivity extends Activity {
 
 }
