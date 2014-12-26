@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/list_margin_top"
-        android:padding="@dimen/list_element_padding" >
+         >
     </ListView>
 
 </RelativeLayout>
