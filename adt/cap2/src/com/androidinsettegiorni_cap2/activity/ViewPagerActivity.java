@@ -31,7 +31,6 @@ public class ViewPagerActivity extends FragmentActivity {
 
 		mPager.setAdapter(mAdapter);
 
-		// Watch for button clicks.
 		Button button = (Button) findViewById(R.id.goto_first);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

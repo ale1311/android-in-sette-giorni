@@ -10,5 +10,7 @@
     <string name="image_button_example">Questo è un esempio di ImageButton</string>
     <string name="last">+</string>
     <string name="first">-</string>
+    <string name="text1">TextView 1</string>
+    <string name="text2">TextView 2</string>
 
 </resources>
