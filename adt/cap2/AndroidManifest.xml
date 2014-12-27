@@ -26,7 +26,6 @@
         <activity android:name=".activity.GridViewActivity" />
         <activity android:name=".activity.ImageViewActivity" />
         <activity android:name=".activity.TextActivity" />
-        <activity android:name=".activity.RelativeLayoutActivity" />
         <activity android:name=".activity.ViewPagerActivity" />
         <activity
             android:name=".activity.VideoViewActivity"

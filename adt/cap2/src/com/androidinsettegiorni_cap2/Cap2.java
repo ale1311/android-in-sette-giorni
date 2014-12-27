@@ -17,8 +17,7 @@ import android.widget.ListView;
 import com.androidinsettegiorni_cap2.activity.ButtonActivity;
 import com.androidinsettegiorni_cap2.activity.GridViewActivity;
 import com.androidinsettegiorni_cap2.activity.ImageViewActivity;
-import com.androidinsettegiorni_cap2.activity.LinearLayoutActivity;
-import com.androidinsettegiorni_cap2.activity.RelativeLayoutActivity;
+import com.androidinsettegiorni_cap2.activity.TextActivity;
 import com.androidinsettegiorni_cap2.activity.VideoViewActivity;
 import com.androidinsettegiorni_cap2.activity.ViewPagerActivity;
 import com.androidinsettegiorni_cap2.adapter.ElementAdapter;
@@ -89,17 +88,13 @@ public class Cap2 extends Activity {
 
 		ArrayList<ElementoGrafico> listElement = new ArrayList<ElementoGrafico>();
 
-		ElementoGrafico i1 = new ElementoGrafico("LinearLayout", LinearLayoutActivity.class);
-		ElementoGrafico i2 = new ElementoGrafico("RelativeLayout", RelativeLayoutActivity.class);
 		ElementoGrafico i3 = new ElementoGrafico("ImageView", ImageViewActivity.class);
-		ElementoGrafico i4 = new ElementoGrafico("Text Layout", LinearLayoutActivity.class);
+		ElementoGrafico i4 = new ElementoGrafico("Text Layout", TextActivity.class);
 		ElementoGrafico i5 = new ElementoGrafico("Button Layout", ButtonActivity.class);
 		ElementoGrafico i6 = new ElementoGrafico("GridView", GridViewActivity.class);
 		ElementoGrafico i7 = new ElementoGrafico("VideoView", VideoViewActivity.class);
 		ElementoGrafico i8 = new ElementoGrafico("ViewPager", ViewPagerActivity.class);
 
-		listElement.add(i1);
-		listElement.add(i2);
 		listElement.add(i3);
 		listElement.add(i4);
 		listElement.add(i5);
