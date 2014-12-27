@@ -7,3 +7,7 @@ adt/cap2/bin/
 adt/cap2/.classpath
 adt/cap2/.project
 adt/cap2/gen/
+.DS_Store
+adt/.DS_Store
+adt/cap2/.DS_Store
+adt/cap2/res/.DS_Store
