@@ -16,7 +16,7 @@ public class FragmentExample extends Fragment {
 
 	public static Fragment newInstance(int position) {
 
-		Fragment f = new Fragment();
+		FragmentExample f = new FragmentExample();
 
 		Bundle b = new Bundle();
 		b.putInt(position_label, position);
