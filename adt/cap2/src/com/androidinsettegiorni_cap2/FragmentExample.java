@@ -30,7 +30,7 @@ public class FragmentExample extends Fragment {
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.text_pager_element, container, false);
-		textView = (TextView) view;
+		textView = (TextView) view.findViewById(R.id.text_pager);
 		return view;
 	}
 
@@ -41,7 +41,7 @@ public class FragmentExample extends Fragment {
 
 		Bundle b = getArguments();
 
-		textView.setText(b.getInt(position_label, -1));
+		textView.setText("" + b.getInt(position_label, -1));
 
 	}
 }
