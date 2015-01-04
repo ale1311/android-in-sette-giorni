@@ -15,3 +15,6 @@ adt/cap2/gen/
 adt/.DS_Store
 adt/cap2/.DS_Store
 adt/cap2/res/.DS_Store
+
+#test-repo
+test/
