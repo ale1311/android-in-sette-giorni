@@ -16,5 +16,15 @@ adt/.DS_Store
 adt/cap2/.DS_Store
 adt/cap2/res/.DS_Store
 
+#cap3
+adt/cap3/bin/
+adt/cap3/.classpath
+adt/cap3/.project
+adt/cap3/gen/
+.DS_Store
+adt/.DS_Store
+adt/cap3/.DS_Store
+adt/cap3/res/.DS_Store
+
 #test-repo
 test/
