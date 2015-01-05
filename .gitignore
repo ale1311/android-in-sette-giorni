@@ -27,7 +27,66 @@ adt/cap3/.DS_Store
 adt/cap3/res/.DS_Store
 adt/cap3/.settings/org.eclipse.jdt.core.prefs
 
+#AndroidStudio
+# Android Studio
+*.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+*.gradle
+*build/
 
+
+#Default
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project
 
 #test-repo
 test/
