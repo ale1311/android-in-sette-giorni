@@ -25,6 +25,9 @@ adt/cap3/gen/
 adt/.DS_Store
 adt/cap3/.DS_Store
 adt/cap3/res/.DS_Store
+adt/cap3/.settings/org.eclipse.jdt.core.prefs
+
+
 
 #test-repo
 test/
