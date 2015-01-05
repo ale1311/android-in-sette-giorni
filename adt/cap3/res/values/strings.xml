@@ -3,5 +3,7 @@
 
     <string name="hello">Capitolo 3</string>
     <string name="app_name">Android in sette giorni - Capitolo 3</string>
+    <string name="isconnected">Dispositivo connesso in WIFI</string>
+    <string name="noconnected">Dispositivo non connesso in WIFI</string>
 
 </resources>
