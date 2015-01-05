@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidinsettegiorni_cap3.R;
+import com.androidinsettegiorni_cap3.dialog.DialogFragmentEmpty;
 import com.androidinsettegiorni_cap3.dialog.DialogFragmentText;
 import com.androidinsettegiorni_cap3.fragment.ButtonSwitchFragment;
 import com.androidinsettegiorni_cap3.fragment.EmptyFragment;
@@ -173,7 +175,16 @@ public class MainActivity extends Activity {
 
 			dialog.show(getFragmentManager(), null);
 
+			break;
+
 		case R.id.menu_send:
+
+			DialogFragmentEmpty empty = DialogFragmentEmpty.newInstance();
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+			empty.show(ft, DialogFragmentEmpty.TAG);
+
+			break;
 
 		}
 
