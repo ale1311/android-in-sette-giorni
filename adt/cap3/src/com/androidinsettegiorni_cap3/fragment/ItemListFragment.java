@@ -81,7 +81,7 @@ public class ItemListFragment extends ListFragment {
 					Intent intent = new Intent(getActivity(), DetailActivity.class);
 					intent.putExtra(DetailActivity.KEY_LIST, listOrg);
 					intent.putExtra(DetailActivity.KEY_POSITION, position);
-					getActivity().startActivity(intent);
+					getActivity().startActivityForResult(intent, DetailActivity.CODE);
 				}
 			});
 		}

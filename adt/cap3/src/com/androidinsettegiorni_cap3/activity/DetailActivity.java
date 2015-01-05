@@ -3,10 +3,6 @@ package com.androidinsettegiorni_cap3.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.androidinsettegiorni_cap3.R;
-import com.androidinsettegiorni_cap3.fragment.DetailFragment;
-import com.androidinsettegiorni_cap3.model.Item;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -18,59 +14,64 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.androidinsettegiorni_cap3.R;
+import com.androidinsettegiorni_cap3.fragment.DetailFragment;
+import com.androidinsettegiorni_cap3.model.Item;
+
 public class DetailActivity extends Activity {
 
 	public final static String TAG = DetailActivity.class.getSimpleName();
 	public final static String KEY_LIST = "key_list";
 	public final static String KEY_POSITION = "key_position";
-	
+	public final static int CODE = 111;
+
 	ArrayList<Item> list;
 	private List<DetailFragment> fragments;
-	
+
 	public DetailActivity() {
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-	
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail_activity);
-		
+
 		Intent intent = getIntent();
-		list = (ArrayList<Item>)intent.getSerializableExtra(KEY_LIST);
-		
+		list = (ArrayList<Item>) intent.getSerializableExtra(KEY_LIST);
+
 		fragments = new ArrayList<DetailFragment>();
 		for (Item item : list) {
 			fragments.add(new DetailFragment(item));
 		}
-		
-		final ViewPager pager = (ViewPager)findViewById(R.id.pager);
+
+		final ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
 			@Override
 			public int getCount() {
 				return list.size();
 			}
-			
+
 			@Override
 			public Fragment getItem(int position) {
-//				return new DetailFragment(list.get(position));
+				// return new DetailFragment(list.get(position));
 				return fragments.get(position);
-//				return new LabelListFragment(DummyGenerator.getLabelList());
+				// return new LabelListFragment(DummyGenerator.getLabelList());
 			}
 		});
 		pager.setCurrentItem(intent.getIntExtra(KEY_POSITION, 0));
-		
+
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.detail_menu, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

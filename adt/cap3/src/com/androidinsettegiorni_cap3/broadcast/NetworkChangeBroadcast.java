@@ -19,7 +19,7 @@ public class NetworkChangeBroadcast extends BroadcastReceiver {
 		final NetworkInfo networkInfo = networkConnectivity.getActiveNetworkInfo();
 
 		if (networkInfo != null) {
-			if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE || networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+			if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
 				Toast.makeText(context, R.string.isconnected, Toast.LENGTH_LONG).show();
 			} else {
 				Toast.makeText(context, R.string.noconnected, Toast.LENGTH_LONG).show();
