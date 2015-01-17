@@ -27,8 +27,8 @@
             android:authorities="it.moondroid.contentprovider.lentitems"
             android:exported="true"
             android:grantUriPermissions="true"
-            android:label="LentItemsProvider"
-            android:readPermission="it.moondroid.contentprovider.lentitems.READ"
+            android:label="Capitolo 4"
+            android:readPermission="@string/read_permission"
             android:writePermission="it.moondroid.contentprovider.lentitems.WRITE" >
         </provider>
     </application>

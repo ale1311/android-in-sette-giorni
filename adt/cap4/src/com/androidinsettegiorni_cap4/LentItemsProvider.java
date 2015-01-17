@@ -1,7 +1,5 @@
 package com.androidinsettegiorni_cap4;
 
-import com.androidinsettegiorni_cap4.LentItemsContract.Items;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -13,19 +11,21 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.androidinsettegiorni_cap4.LentItemsContract.Items;
+
 /**
  * The actual provider class for the lentitems provider. Clients do not use it
  * directly. Nor do they see it.
  */
 public class LentItemsProvider extends ContentProvider {
 
-	// helper constants for use with the UriMatcher
+	// Costanti
 	private static final int ITEM_LIST = 1;
 	private static final int ITEM_ID = 2;
 
 	private static final UriMatcher URI_MATCHER;
 
-	// prepare the UriMatcher
+	// setup UriMatcher
 	static {
 		URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 		URI_MATCHER.addURI(LentItemsContract.AUTHORITY, "items", ITEM_LIST);
@@ -51,12 +51,11 @@ public class LentItemsProvider extends ContentProvider {
 	 * result. Return the data as a Cursor object.
 	 */
 	@Override
-	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
 		SQLiteDatabase db = mHelper.getReadableDatabase();
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-			
+
 		switch (URI_MATCHER.match(uri)) {
 		case ITEM_LIST:
 			builder.setTables(DbSchema.TBL_ITEMS);
@@ -66,21 +65,19 @@ public class LentItemsProvider extends ContentProvider {
 			break;
 		case ITEM_ID:
 			builder.setTables(DbSchema.TBL_ITEMS);
-			// limit query to one row at most:
+			// limite la query all'elemento passato come parametro
 			builder.appendWhere(Items._ID + " = " + uri.getLastPathSegment());
 			break;
-		
+
 		default:
 			throw new IllegalArgumentException("Unsupported URI: " + uri);
 		}
-		
-		
-		Cursor cursor = builder.query(db, projection, selection, selectionArgs,
-				null, null, sortOrder);
-		
-		// notify listeners of any changes:
+
+		Cursor cursor = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+
+		// notifica i listener per ogni possibile cambiamento
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
-		
+
 		return cursor;
 	}
 
@@ -95,16 +92,16 @@ public class LentItemsProvider extends ContentProvider {
 		SQLiteDatabase db = mHelper.getWritableDatabase();
 		if (URI_MATCHER.match(uri) == ITEM_LIST) {
 			long id = db.insert(DbSchema.TBL_ITEMS, null, values);
-			
+
 			Uri retUri = ContentUris.withAppendedId(uri, id);
-			
-			// notify listeners of any changes:
-            getContext().getContentResolver().notifyChange(retUri, null);
-            
+
+			// Notifica eventuali cambiamenti
+			getContext().getContentResolver().notifyChange(retUri, null);
+
 			return retUri;
 		}
 
-		throw new SQLException("Problem while inserting into uri: " + uri);
+		throw new SQLException("Problema inserimento -> uri: " + uri);
 	}
 
 	/**
@@ -113,38 +110,35 @@ public class LentItemsProvider extends ContentProvider {
 	 * number of rows updated.
 	 */
 	@Override
-	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
-		
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+
 		SQLiteDatabase db = mHelper.getWritableDatabase();
-        int updateCount = 0;
-        
-        switch (URI_MATCHER.match(uri)) {
-        case ITEM_LIST:
-                updateCount = db.update(DbSchema.TBL_ITEMS, values, selection,
-                                selectionArgs);
-                break;
-        case ITEM_ID:
-                String idStr = uri.getLastPathSegment();
-                String where = Items._ID + " = " + idStr;
-                if (!TextUtils.isEmpty(selection)) {
-                        where += " AND " + selection;
-                }
-                updateCount = db.update(DbSchema.TBL_ITEMS, values, where,
-                                selectionArgs);
-                break;
-        default:
-                // no support for updating photos!
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
-        }
-       
-        // notify listeners of any changes:
-        if (updateCount > 0) {
-        	 getContext().getContentResolver().notifyChange(uri, null);
-        }      
-        
-        return updateCount;
-        
+		int updateCount = 0;
+
+		switch (URI_MATCHER.match(uri)) {
+		case ITEM_LIST:
+			updateCount = db.update(DbSchema.TBL_ITEMS, values, selection, selectionArgs);
+			break;
+		case ITEM_ID:
+			String idStr = uri.getLastPathSegment();
+			String where = Items._ID + " = " + idStr;
+			if (!TextUtils.isEmpty(selection)) {
+				where += " AND " + selection;
+			}
+			updateCount = db.update(DbSchema.TBL_ITEMS, values, where, selectionArgs);
+			break;
+		default:
+			// Operazione non supportata
+			throw new IllegalArgumentException("Unsupported URI: " + uri);
+		}
+
+		// Notifica eventuali cambiamenti
+		if (updateCount > 0) {
+			getContext().getContentResolver().notifyChange(uri, null);
+		}
+
+		return updateCount;
+
 	}
 
 	/**
@@ -153,34 +147,33 @@ public class LentItemsProvider extends ContentProvider {
 	 */
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		
+
 		SQLiteDatabase db = mHelper.getWritableDatabase();
-        int delCount = 0;
-        
-        switch (URI_MATCHER.match(uri)) {
-        case ITEM_LIST:
-                delCount = db.delete(DbSchema.TBL_ITEMS, selection, selectionArgs);
-                break;
-        case ITEM_ID:
-                String idStr = uri.getLastPathSegment();
-                String where = Items._ID + " = " + idStr;
-                if (!TextUtils.isEmpty(selection)) {
-                        where += " AND " + selection;
-                }
-                delCount = db.delete(DbSchema.TBL_ITEMS, where, selectionArgs);
-                break;
-        default:
-                // no support for deleting photos or entities -
-                // photos are deleted by a trigger when the item is deleted
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
-        }
-        
-        // notify listeners of any changes:
+		int delCount = 0;
+
+		switch (URI_MATCHER.match(uri)) {
+		case ITEM_LIST:
+			delCount = db.delete(DbSchema.TBL_ITEMS, selection, selectionArgs);
+			break;
+		case ITEM_ID:
+			String idStr = uri.getLastPathSegment();
+			String where = Items._ID + " = " + idStr;
+			if (!TextUtils.isEmpty(selection)) {
+				where += " AND " + selection;
+			}
+			delCount = db.delete(DbSchema.TBL_ITEMS, where, selectionArgs);
+			break;
+		default:
+			// Operazione non supportata
+			throw new IllegalArgumentException("Unsupported URI: " + uri);
+		}
+
+		// Notifica eventuali cambiamenti
 		if (delCount > 0) {
 			getContext().getContentResolver().notifyChange(uri, null);
 		}
 
-        return delCount;
+		return delCount;
 	}
 
 	/**

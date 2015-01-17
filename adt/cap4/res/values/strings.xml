@@ -3,5 +3,7 @@
 
     <string name="app_name">Cap 4 -Android in sette giorni</string>
 	<string name="action_settings">Impostazioni</string>
+	
+	<string name="read_permission">it.moondroid.contentprovider.lentitems.READ"</string>
 
 </resources>

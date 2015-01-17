@@ -15,17 +15,17 @@ public final class LentItemsContract {
 	 */
 	public static final String AUTHORITY =
 
-	"it.moondroid.contentprovider.lentitems";
+	"com.androidinsettegiorni.contentprovider.lentitems";
 
 	/**
 	 * The content URI for the top-level lentitems authority.
 	 */
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
-	
+
 	/**
-     * A selection clause for ID based queries.
-     */
-    public static final String SELECTION_ID_BASED = BaseColumns._ID + " = ? ";
+	 * A selection clause for ID based queries.
+	 */
+	public static final String SELECTION_ID_BASED = BaseColumns._ID + " = ? ";
 
 	/**
 	 * Constants for the Items table of the lentitems provider.
@@ -35,19 +35,16 @@ public final class LentItemsContract {
 		/**
 		 * The content URI for this table.
 		 */
-		public static final Uri CONTENT_URI = Uri.withAppendedPath(
-				LentItemsContract.CONTENT_URI, "items");
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(LentItemsContract.CONTENT_URI, "items");
 		/**
 		 * The mime type of a directory of items.
 		 */
-		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
-				+ "/vnd.it.moondroid.lentitems_items";
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/vnd.it.moondroid.lentitems_items";
 		/**
 		 * The mime type of a single item.
 		 */
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
-				+ "/vnd.it.moondroid.lentitems_items";
-		
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/vnd.it.moondroid.lentitems_items";
+
 		/**
 		 * The name of the item.
 		 */
@@ -56,17 +53,17 @@ public final class LentItemsContract {
 		 * The borrower of the item.
 		 */
 		public static final String BORROWER = "borrower";
-		
+
 		/**
 		 * A projection of all columns in the items table.
 		 */
 		public static final String[] PROJECTION_ALL = { _ID, NAME, BORROWER };
-		
+
 		/**
 		 * The default sort order for queries containing NAME fields.
 		 */
 		public static final String SORT_ORDER_DEFAULT = NAME + " ASC";
-		
+
 		/**
 		 * Sort order by id
 		 */
