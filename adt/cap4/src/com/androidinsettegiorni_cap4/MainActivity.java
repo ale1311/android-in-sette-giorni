@@ -1,6 +1,5 @@
-package it.moondroid.contentprovider_example2;
+package com.androidinsettegiorni_cap4;
 
-import it.moondroid.contentprovider_example2.FragmentItemsList.ItemsListListener;
 import android.os.Bundle;
 import android.content.ContentValues;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.androidinsettegiorni_cap4.R;
+import com.androidinsettegiorni_cap4.FragmentItemsList.ItemsListListener;
 
 public class MainActivity extends FragmentActivity 
 implements OnClickListener, ItemsListListener {

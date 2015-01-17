@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/myListFragment"
-        android:name="it.moondroid.contentprovider_example2.FragmentItemsList"
+        android:name="com.androidinsettegiorni_cap4.FragmentItemsList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

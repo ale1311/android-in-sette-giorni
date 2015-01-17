@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ContentProvider-Example2</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Cap 4 -Android in sette giorni</string>
+	<string name="action_settings">Impostazioni</string>
 
 </resources>

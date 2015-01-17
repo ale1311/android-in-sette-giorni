@@ -1,4 +1,4 @@
-package it.moondroid.contentprovider_example2;
+package com.androidinsettegiorni_cap4;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

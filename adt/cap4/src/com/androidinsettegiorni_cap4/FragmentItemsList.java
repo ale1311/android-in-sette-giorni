@@ -1,4 +1,4 @@
-package it.moondroid.contentprovider_example2;
+package com.androidinsettegiorni_cap4;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.widget.ListView;
+import com.androidinsettegiorni_cap4.R;
 
 public class FragmentItemsList extends ListFragment implements
 		LoaderCallbacks<Cursor> {

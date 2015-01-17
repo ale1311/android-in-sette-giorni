@@ -1,6 +1,7 @@
-package it.moondroid.contentprovider_example2;
+package com.androidinsettegiorni_cap4;
 
-import it.moondroid.contentprovider_example2.LentItemsContract.Items;
+import com.androidinsettegiorni_cap4.LentItemsContract.Items;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
