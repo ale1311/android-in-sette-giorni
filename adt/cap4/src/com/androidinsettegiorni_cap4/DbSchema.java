@@ -3,10 +3,10 @@ package com.androidinsettegiorni_cap4;
 import android.provider.BaseColumns;
 
 /**
- * A helper interface which defines constants for work with the DB.
- * 
+ * Helper che definisce le constanti utili per la gestione del Db.
  */
-/* package private */interface DbSchema {
+
+interface DbSchema {
 
 	String DB_NAME = "cap4.db";
 
@@ -16,10 +16,6 @@ import android.provider.BaseColumns;
 	String COL_ITEM_NAME = "item_name";
 	String COL_BORROWER = "borrower";
 
-	// BE AWARE: Normally you would store the LOOKUP_KEY
-	// of a contact from the device. But this would
-	// have needless complicated the sample. Thus I
-	// omitted it.
 	String DDL_CREATE_TBL_ITEMS = "CREATE TABLE items (" + "_id           INTEGER  PRIMARY KEY AUTOINCREMENT, \n" + "item_name     TEXT,\n" + "borrower      TEXT \n" + ")";
 
 	String DDL_DROP_TBL_ITEMS = "DROP TABLE IF EXISTS items";

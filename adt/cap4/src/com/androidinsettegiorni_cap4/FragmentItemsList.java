@@ -26,13 +26,13 @@ public class FragmentItemsList extends ListFragment implements LoaderCallbacks<C
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// LoaderManager is an abstract class associated with an Activity or
-		// Fragment for managing one or more Loader instance
 		LoaderManager manager = getLoaderManager();
 
 		manager.initLoader(LOADER_ID, null, this); // id, bundle, loadercallback
 
-		// Create an empty adapter we will use to display the loaded data.
+		// Creazione di un SimpleCursorAdapter per la gestione e la
+		// visualizzazione
+		// dei dati.
 		mAdapter = new SimpleCursorAdapter(getActivity().getApplicationContext(), R.layout.list_item, null, new String[] { LentItemsContract.Items._ID, LentItemsContract.Items.NAME }, new int[] { R.id.idLabel, R.id.nameLabel }, SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
 		setListAdapter(mAdapter);
@@ -43,20 +43,15 @@ public class FragmentItemsList extends ListFragment implements LoaderCallbacks<C
 	public void onActivityCreated(Bundle savedInstanceState) {
 
 		super.onActivityCreated(savedInstanceState);
-		// text to display for the list when there're no items
-		setEmptyText("there are no items");
+		// Testo da visualizzare se non ci sono item
+		setEmptyText(getString(R.string.no_items));
 	}
 
-	// Called when calling initLoader, instantiate and return a new Loader for
-	// the given ID
+	// CHiamato quando è chiamato il metodo initLoader,
+	// Istanzia e restituisce un nuovo loader per il determinato ID
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-		// The most common use of Loaders is with a CursorLoader,
-		// however applications are free to write their own loaders for loading
-		// other types of data.
-		// CursorLoader is a subclass of AsyncTaskLoader that queries the
-		// ContentResolver on a background thread and returns a Cursor.
 		CursorLoader cl = new CursorLoader(getActivity().getApplicationContext(), LentItemsContract.Items.CONTENT_URI, new String[] { LentItemsContract.Items._ID, LentItemsContract.Items.NAME }, null, null, LentItemsContract.Items.SORT_ORDER_ID);
 
 		return cl;
@@ -75,7 +70,7 @@ public class FragmentItemsList extends ListFragment implements LoaderCallbacks<C
 		mAdapter.swapCursor(null);
 	}
 
-	// onListItemClick implements onclick listener for the list
+	// onListItemClick implementa onclick listener per la lista
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 

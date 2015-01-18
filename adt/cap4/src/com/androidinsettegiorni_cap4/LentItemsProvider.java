@@ -35,9 +35,10 @@ public class LentItemsProvider extends ContentProvider {
 	private LentItemsOpenHelper mHelper = null;
 
 	/**
-	 * Initialize your provider. The Android system calls this method
-	 * immediately after it creates your provider. Notice that your provider is
-	 * not created until a ContentResolver object tries to access it.
+	 * Inizializza il provider. Il sistema ANdroid chiama questo metodo
+	 * immediatamente dopo aver creato il content provider. Il provider non è
+	 * creato finché non è invocato un oggetto Content Resolver che prova ad
+	 * accedere a esso.
 	 */
 	@Override
 	public boolean onCreate() {
@@ -46,9 +47,7 @@ public class LentItemsProvider extends ContentProvider {
 	}
 
 	/**
-	 * Retrieve data from your provider. Use the arguments to select the table
-	 * to query, the rows and columns to return, and the sort order of the
-	 * result. Return the data as a Cursor object.
+	 * Callback per la gestione delle query del content provider
 	 */
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
@@ -82,9 +81,7 @@ public class LentItemsProvider extends ContentProvider {
 	}
 
 	/**
-	 * Insert a new row into your provider. Use the arguments to select the
-	 * destination table and to get the column values to use. Return a content
-	 * URI for the newly-inserted row.
+	 * Callback per operazion di insert degli elementi
 	 */
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
@@ -105,9 +102,7 @@ public class LentItemsProvider extends ContentProvider {
 	}
 
 	/**
-	 * Update existing rows in your provider. Use the arguments to select the
-	 * table and rows to update and to get the updated column values. Return the
-	 * number of rows updated.
+	 * Utile per operazioni di update degli elelemtni
 	 */
 	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
@@ -142,8 +137,7 @@ public class LentItemsProvider extends ContentProvider {
 	}
 
 	/**
-	 * Delete rows from your provider. Use the arguments to select the table and
-	 * the rows to delete. Return the number of rows deleted.
+	 * Callback per operazioni di delete sugli elementi
 	 */
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -176,9 +170,6 @@ public class LentItemsProvider extends ContentProvider {
 		return delCount;
 	}
 
-	/**
-	 * Return the MIME type corresponding to a content URI.
-	 */
 	@Override
 	public String getType(Uri uri) {
 
