@@ -40,11 +40,11 @@ public final class LentItemsContract {
 		/**
 		 * Mime type della directory degli item,
 		 */
-		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/vnd.it.moondroid.lentitems_items";
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/vnd.com.androidinsettegiorni.lentitems_items";
 		/**
 		 * Mime type del singolo elemento.
 		 */
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/vnd.it.moondroid.lentitems_items";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/vnd.com.androidinsettegiorni.lentitems_items";
 
 		/**
 		 * Nome dell'elemento.

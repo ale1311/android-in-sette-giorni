@@ -22,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.androidinsettegiorni_cap4.TestPreferenceActivity" />
+        <activity android:name="com.androidinsettegiorni_cap4.ViewPreferences" />
 
         <provider
             android:name="com.androidinsettegiorni_cap4.LentItemsProvider"
