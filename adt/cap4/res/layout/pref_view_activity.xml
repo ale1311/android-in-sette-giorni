@@ -8,13 +8,13 @@
         android:id="@+id/btnPrefs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preferences Screen" />
+        android:text="@string/pref_screen" />
 
     <Button
         android:id="@+id/btnGetPreferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Display Shared Preferences" />
+        android:text="@string/show_pref" />
 
     <TextView
         android:id="@+id/txtPrefs"

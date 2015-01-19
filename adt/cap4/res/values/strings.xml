@@ -7,7 +7,13 @@
     <string name="read_permission">com.androidinsettegiorni.contentprovider.lentitems.READ"</string>
     <string name="write_permission">com.androidinsettegiorni.contentprovider.lentitems.WRITE</string>
 
-    
+    <string name="pref_screen">Screen preferenze</string>
+    <string name="show_pref">Mostra Shared Preferences</string>
+    <string name="username_summary">Inserisci il tuo username</string>
+    <string name="password_summary">Inserisci la tua password</string>
+    <string name="check_preference">Mantienimi loggato</string>
+    <string name="list_options_summary">Esempio lista preferenze</string>
+    <string name="list_options_title">Esempio lista</string>
     
      <string-array name="listOptions">
      <item>Opzione 1</item>

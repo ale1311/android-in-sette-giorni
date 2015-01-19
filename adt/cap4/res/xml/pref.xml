@@ -6,27 +6,27 @@
         android:title="Login information" >
         <EditTextPreference
             android:key="username"
-            android:summary="Please enter your login username"
+            android:summary="@string/username_summary"
             android:title="Username" />
         <EditTextPreference
             android:key="password"
-            android:summary="Enter your password"
+            android:summary="@string/password_summary"
             android:title="Password" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:summary="Username and password information"
-        android:title="Settings" >
+        android:summary="Username + password"
+        android:title="Impostazione" >
         <CheckBoxPreference
             android:key="checkBox"
             android:summary="On/Off"
-            android:title="Keep me logged in" />
+            android:title="@string/check_preference" />
 
         <ListPreference
             android:entries="@array/listOptions"
             android:entryValues="@array/listValues"
             android:key="listpref"
-            android:summary="List preference example"
-            android:title="List preference" />
+            android:summary="@string/list_options_summary"
+            android:title="@string/list_options_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

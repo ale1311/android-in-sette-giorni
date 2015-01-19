@@ -27,7 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/idLabel"
         android:gravity="center"
-        android:text="name"
+        android:text="Nome"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000" />
 
