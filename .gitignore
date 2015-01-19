@@ -27,6 +27,12 @@ adt/cap3/.DS_Store
 adt/cap3/res/.DS_Store
 adt/cap3/.settings/org.eclipse.jdt.core.prefs
 
+#cap4
+adt/cap4/.settings/
+
+
+
+
 #AndroidStudio
 # Android Studio
 *.idea
