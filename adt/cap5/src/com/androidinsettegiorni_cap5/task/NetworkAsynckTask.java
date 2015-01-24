@@ -7,8 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidinsettegiorni_cap5.R;
 import com.androidinsettegiorni_cap5.model.Ip;
@@ -39,6 +42,15 @@ public class NetworkAsynckTask extends AsyncTask<Void, Void, Ip> {
 		providerView.setText(mContext.getString(R.string.provider) + mContext.getString(R.string.loading));
 		ispView.setText(mContext.getString(R.string.isp) + mContext.getString(R.string.loading));
 		locationView.setText(mContext.getString(R.string.location) + mContext.getString(R.string.loading));
+
+		ConnectivityManager connManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+
+		} else {
+			cancel(true);
+		}
+
 		super.onPreExecute();
 	}
 
@@ -47,18 +59,29 @@ public class NetworkAsynckTask extends AsyncTask<Void, Void, Ip> {
 
 		Ip currentIp = null;
 		HttpURLConnection urlConnection = null;
+
 		try {
 			URL url = new URL(this.mContext.getString(R.string.endpoint));
 			urlConnection = (HttpURLConnection) url.openConnection();
+			urlConnection.connect();
+			int statusCode = urlConnection.getResponseCode();
+			if (statusCode == 200) {
+				InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+				currentIp = mapper.readValue(in, Ip.class);
+			} else {
+				cancel(true);
+				Toast.makeText(mContext, mContext.getString(R.string.error) + " " + statusCode, Toast.LENGTH_SHORT).show();
+			}
 
-			InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-			currentIp = mapper.readValue(in, Ip.class);
 		} catch (IOException e) {
 
 			e.printStackTrace();
+			cancel(true);
+
 		} finally {
 			if (urlConnection != null)
 				urlConnection.disconnect();
+
 		}
 		return currentIp;
 	}

@@ -10,13 +10,12 @@
     tools:context="com.androidinsettegiorni_cap5.MainActivity" >
 
     <TextView
-        android:id="@+id/current_ip"
+        style="@android:style/TextAppearance.Holo.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="@dimen/padding_title"
-        android:text="@string/ip_information"
-        style="@android:style/TextAppearance.Holo.Medium" />
+        android:text="@string/ip_information" />
 
     <TextView
         android:id="@+id/current_ip"
