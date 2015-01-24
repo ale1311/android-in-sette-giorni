@@ -41,12 +41,36 @@
         android:layout_height="wrap_content"
         android:text="@string/location" />
 
-    <Button
-        android:id="@+id/button1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:onClick="calculate_ip"
+            android:text="@string/text_button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:onClick="update_image"
+            android:text="@string/image_button" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="calculate_ip"
-        android:text="@string/text_button" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
 
 </LinearLayout>
