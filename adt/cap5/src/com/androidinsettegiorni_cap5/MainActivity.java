@@ -4,13 +4,25 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.androidinsettegiorni_cap5.task.NetworkAsynckTask;
 
 public class MainActivity extends Activity {
+
+	private TextView ipView, providerView, ispView, locationView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		ipView = (TextView) findViewById(R.id.current_ip);
+		providerView = (TextView) findViewById(R.id.current_provider);
+		ispView = (TextView) findViewById(R.id.current_isp);
+		locationView = (TextView) findViewById(R.id.current_localtion);
+
 	}
 
 	@Override
@@ -30,5 +42,10 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void calculate_ip(View v) {
+
+		new NetworkAsynckTask(this, ipView, providerView, ispView, locationView).execute();
 	}
 }
