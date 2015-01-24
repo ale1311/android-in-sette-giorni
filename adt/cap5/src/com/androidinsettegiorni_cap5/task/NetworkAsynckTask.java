@@ -77,10 +77,10 @@ public class NetworkAsynckTask extends AsyncTask<Void, Void, Ip> {
 	@Override
 	protected void onCancelled() {
 
-		ipView.setText(mContext.getString(R.string.ip) + mContext.getString(R.string.error));
-		providerView.setText(mContext.getString(R.string.provider) + mContext.getString(R.string.error));
-		ispView.setText(mContext.getString(R.string.isp) + mContext.getString(R.string.error));
-		locationView.setText(mContext.getString(R.string.location) + mContext.getString(R.string.error));
+		ipView.setText(mContext.getString(R.string.ip) + " " + mContext.getString(R.string.error));
+		providerView.setText(mContext.getString(R.string.provider) + " " + mContext.getString(R.string.error));
+		ispView.setText(mContext.getString(R.string.isp) + " " + mContext.getString(R.string.error));
+		locationView.setText(mContext.getString(R.string.location) + " " + mContext.getString(R.string.error));
 		super.onCancelled();
 	}
 }
