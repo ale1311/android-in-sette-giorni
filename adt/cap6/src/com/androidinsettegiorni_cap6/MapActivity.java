@@ -11,15 +11,27 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
+public class MapActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, OnMapReadyCallback, LocationListener {
 	private GoogleApiClient mGoogleApiClient;
 	private Location mLastLocation;
+	private LocationRequest mLocationRequest;
+
+	private GoogleMap mMap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+		mapFragment.getMapAsync(this);
 
 		buildGoogleApiClient();
 	}
@@ -32,22 +44,21 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	public void onConnected(Bundle connectionHint) {
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 		if (mLastLocation != null) {
-			// mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-			// mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+			mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Ero qui l'ultima volta"));
+			mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude())));
 		}
 	}
 
 	@Override
 	public void onLocationChanged(Location location) {
 		mLastLocation = location;
-		// mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+
 		updateUI();
 	}
 
 	private void updateUI() {
-		// mLatitudeTextView.setText(String.valueOf(mLastLocation.getLatitude()));
-		// mLongitudeTextView.setText(String.valueOf(mLastLocation.getLongitude()));
-		// mLastUpdateTimeTextView.setText(mLastUpdateTime);
+		mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude())));
+		mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Sono qui!"));
 	}
 
 	@Override
@@ -61,7 +72,7 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	}
 
 	protected void createLocationRequest() {
-		LocationRequest mLocationRequest = new LocationRequest();
+		mLocationRequest = new LocationRequest();
 		mLocationRequest.setInterval(10000);
 		mLocationRequest.setFastestInterval(5000);
 		mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -71,18 +82,34 @@ public class MainActivity extends Activity implements ConnectionCallbacks, OnCon
 	public void onResume() {
 		super.onResume();
 		if (mGoogleApiClient.isConnected()) {
-			// startLocationUpdates();
+			startLocationUpdates();
 		}
+	}
+
+	protected void startLocationUpdates() {
+		LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		// stopLocationUpdates();
+		if (mGoogleApiClient.isConnected()) {
+			stopLocationUpdates();
+		}
 	}
 
 	protected void stopLocationUpdates() {
 		LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+	}
+
+	@Override
+	public void onMapReady(GoogleMap map) {
+		mMap = map;
+		mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+		mMap.setMyLocationEnabled(true);
+		mMap.setTrafficEnabled(true);
+		mMap.setBuildingsEnabled(true);
+
 	}
 
 }
